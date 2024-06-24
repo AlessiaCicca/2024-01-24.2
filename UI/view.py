@@ -8,7 +8,7 @@ class View(ft.UserControl):
         self._page = page
         self._page.title = "Template application using MVC and DAO"
         self._page.horizontal_alignment = 'CENTER'
-        self._page.theme_mode = ft.ThemeMode.DARK
+        self._page.theme_mode = ft.ThemeMode.LIGHT
         # controller (it is not initialized. Must be initialized in the main, after the controller is created)
         self._controller = None
         # graphical elements
@@ -20,22 +20,33 @@ class View(ft.UserControl):
 
     def load_interface(self):
         # title
-        self._title = ft.Text("Hello World", color="blue", size=24)
+        self._title = ft.Text("ESAME 24/01/2024", color="blue", size=24)
         self._page.controls.append(self._title)
 
         #ROW with some controls
         # text field for the name
-        self.txt_name = ft.TextField(
-            label="name",
+        self.txt_s = ft.TextField(
+            label="S",
             width=200,
-            hint_text="Insert a your name"
+        )
+        self.dd_metodo = ft.Dropdown(
+            label="Metodo",
+        )
+        self.dd_anno = ft.Dropdown(
+            label="Anno",
         )
 
+        self._controller.fillDD()
+
         # button for the "hello" reply
-        self.btn_hello = ft.ElevatedButton(text="Hello", on_click=self._controller.handle_hello)
-        row1 = ft.Row([self.txt_name, self.btn_hello],
+        self.btn_grafo = ft.ElevatedButton(text="Crea Grafo", on_click=self._controller.handle_grafo)
+        self.btn_redditizi = ft.ElevatedButton(text="Calcola prodotti Redditizi", on_click=self._controller.handle_redditizi)
+        row1 = ft.Row([self.txt_s, self.btn_redditizi],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
+        row2 = ft.Row([self.dd_metodo, self.dd_anno, self.btn_grafo],
+                      alignment=ft.MainAxisAlignment.CENTER)
+        self._page.controls.append(row2)
 
         # List View where the reply is printed
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
