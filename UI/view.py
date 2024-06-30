@@ -40,8 +40,9 @@ class View(ft.UserControl):
 
         # button for the "hello" reply
         self.btn_grafo = ft.ElevatedButton(text="Crea Grafo", on_click=self._controller.handle_grafo)
+        self.btn_cammino=ft.ElevatedButton(text="Calcola Cammino", on_click=self._controller.handle_cammino)
         self.btn_redditizi = ft.ElevatedButton(text="Calcola prodotti Redditizi", on_click=self._controller.handle_redditizi)
-        row1 = ft.Row([self.txt_s, self.btn_redditizi],
+        row1 = ft.Row([self.txt_s, self.btn_redditizi, self.btn_cammino],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
         row2 = ft.Row([self.dd_metodo, self.dd_anno, self.btn_grafo],

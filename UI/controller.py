@@ -49,3 +49,10 @@ class Controller:
         for metodo in metodi:
             self._view.dd_metodo.options.append(ft.dropdown.Option(
                 text=metodo))
+
+    def handle_cammino(self,e):
+        costo, listaNodi = self._model.getBestPath()
+        self._view.txt_result.controls.append(ft.Text(f"La soluzione migliore è costituita da {costo} nodi"))
+        for nodo in listaNodi:
+            self._view.txt_result.controls.append(ft.Text(f"{nodo. Product_number} e {nodo.prezzo}"))
+        self._view.update_page()
